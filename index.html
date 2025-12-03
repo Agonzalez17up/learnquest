@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>LearnQuest – Estudiante</title>
+<link rel='stylesheet' href='style.css'>
+</head>
+<body>
+<header class='header'><h1 class='title'>LearnQuest</h1><p class='subtitle'>Modo estudiante – ¡Aprende jugando! 🎉</p></header>
+<main>
+<section id='missions' class='screen'>
+<h2 class='section-title'>Misiones</h2>
+<div class='mission-card'><h3>Misión 1: Partes de la computadora</h3><p>Identifica los componentes principales.</p><div class='mission-buttons'><button class='btn info' onclick='showInstruction(0)'>📄 Instrucción</button><button class='btn info' onclick='showClass(0)'>📚 Clase</button><button class='btn primary' onclick='showQuiz(0)'>Comenzar</button></div></div>
+<div class='mission-card'><h3>Misión 2: Funciones del CPU</h3><p>Aprende cómo trabaja el procesador.</p><div class='mission-buttons'><button class='btn info' onclick='showInstruction(1)'>📄 Instrucción</button><button class='btn info' onclick='showClass(1)'>📚 Clase</button><button class='btn primary' onclick='showQuiz(1)'>Comenzar</button></div></div>
+<div class='mission-card'><h3>Misión 3: Memoria RAM</h3><p>Descubre cómo funciona la memoria.</p><div class='mission-buttons'><button class='btn info' onclick='showInstruction(2)'>📄 Instrucción</button><button class='btn info' onclick='showClass(2)'>📚 Clase</button><button class='btn primary' onclick='showQuiz(2)'>Comenzar</button></div></div>
+</section>
+<section id='instruction-section' class='screen' style='display:none;'><h2>Instrucciones</h2><p id='instruction-text'></p><div class='quiz-actions'><button class='btn secondary' onclick='backToMissions()'>⬅ Volver</button></div></section>
+<section id='class-section' class='screen' style='display:none;'><h2>Clase</h2><div id='class-content'></div><div id='class-summary' class='summary-box'></div><div class='quiz-actions'><button class='btn secondary' onclick='backToMissions()'>⬅ Volver</button></div></section>
+<section id='quiz-section' class='screen' style='display:none;'><h2 class='quiz-title'>Pregunta</h2><p id='question' class='question'>…</p><div id='options' class='options'></div><div class='quiz-actions'><button class='btn secondary' onclick='backToMissions()'>⬅ Volver</button></div></section>
+</main>
+<footer class='footer'><div class='scoreboard'><span>⭐ Puntos: <strong id='points'>0</strong></span><span>🏆 Nivel: <strong id='level'>1</strong></span><span>🎖️ Medallas: <strong id='medals'>0</strong></span></div></footer>
+<div id='custom-modal' class='modal'><div id='modal-content' class='modal-content'><div class='modal-emoji' id='modal-emoji'>🎉</div><h2 id='modal-message' class='modal-message'>¡Bien hecho!</h2><p id='modal-detail' class='modal-detail'>Ganaste 20 puntos</p><button class='btn modal-btn' onclick='closeModal()'>¡Genial!</button></div><div class='confetti' id='confetti'></div></div>
+<audio id='sound-correct' src='assets/correct.mp3'></audio><audio id='sound-wrong' src='assets/wrong.mp3'></audio>
+<script src='script.js'></script>
+</body></html>

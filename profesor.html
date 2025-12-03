@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>LearnQuest – Profesor</title>
+<link rel='stylesheet' href='style.css'>
+<style>.login-box{background:#fff;color:#333;padding:20px;border-radius:12px;max-width:400px;margin:30px auto;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}.login-box input{width:90%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #ccc}.mission-list{background:#fff;color:#333;padding:20px;border-radius:12px;max-width:600px;margin:20px auto;box-shadow:0 6px 16px rgba(0,0,0,.3)}.hidden{display:none}</style>
+</head>
+<body>
+<header class='header'><h1 class='title'>Panel del Profesor</h1><p class='subtitle'>Inicia sesión para continuar</p></header>
+<main class='screen'>
+<div id='login-section' class='login-box'>
+<h2>Login</h2>
+<input type='email' id='email' placeholder='Correo'>
+<input type='password' id='password' placeholder='Contraseña'>
+<button class='btn primary' onclick='login()'>Ingresar</button>
+<p id='login-error' style='color:red;display:none'>Credenciales incorrectas</p>
+</div>
+<div id='missions-section' class='mission-list hidden'>
+<h2>Listado de Misiones</h2>
+<ul>
+<li>Misión 1: Partes de la computadora</li>
+<li>Misión 2: Funciones del CPU</li>
+<li>Misión 3: Memoria RAM</li>
+</ul>
+<div class='quiz-actions'><a class='btn secondary' href='welcome.html'>⬅ Volver</a></div>
+</div>
+</main>
+<script>
+function login(){const email=document.getElementById('email').value;const pass=document.getElementById('password').value;if(email==='arcadio.gonzalez@itpanama.pa'&&pass==='123456'){document.getElementById('login-section').style.display='none';document.getElementById('missions-section').classList.remove('hidden');}else{document.getElementById('login-error').style.display='block';}}
+</script>
+</body></html>
