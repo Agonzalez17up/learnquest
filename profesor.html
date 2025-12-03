@@ -18,16 +18,75 @@
 <p id='login-error' style='color:red;display:none'>Credenciales incorrectas</p>
 </div>
 <div id='missions-section' class='mission-list hidden'>
-<h2>Listado de Misiones</h2>
-<ul>
-<li>Misión 1: Partes de la computadora</li>
-<li>Misión 2: Funciones del CPU</li>
-<li>Misión 3: Memoria RAM</li>
+<h2>Gestión de Clases</h2>
+<div style='margin-bottom:20px;'>
+<h3>Agregar Nueva Clase</h3>
+<input type='text' id='class-name' placeholder='Nombre de la clase' style='width:70%;padding:10px;margin-right:5px;border-radius:8px;border:1px solid #ccc'>
+<button class='btn primary' onclick='addClass()' style='padding:10px 20px;'>+ Agregar</button>
+</div>
+<div style='margin-bottom:20px;'>
+<h3>Lista de Clases</h3>
+<ul id='classes-list' style='list-style:none;padding:0;'>
+<li style='display:flex;justify-content:space-between;padding:10px;background:#f0f0f0;margin:5px 0;border-radius:8px;'>
+<span>Clase 1: Partes de la computadora</span>
+<button class='btn secondary' onclick='deleteClass(0)' style='padding:5px 10px;background:#e74c3c;color:white;border:none;border-radius:5px;cursor:pointer;'>Eliminar</button>
+</li>
+<li style='display:flex;justify-content:space-between;padding:10px;background:#f0f0f0;margin:5px 0;border-radius:8px;'>
+<span>Clase 2: Conociendo Microsoft Word</span>
+<button class='btn secondary' onclick='deleteClass(1)' style='padding:5px 10px;background:#e74c3c;color:white;border:none;border-radius:5px;cursor:pointer;'>Eliminar</button>
+</li>
+<li style='display:flex;justify-content:space-between;padding:10px;background:#f0f0f0;margin:5px 0;border-radius:8px;'>
+<span>Clase 3: El teclado y sus partes</span>
+<button class='btn secondary' onclick='deleteClass(2)' style='padding:5px 10px;background:#e74c3c;color:white;border:none;border-radius:5px;cursor:pointer;'>Eliminar</button>
+</li>
 </ul>
+</div>
 <div class='quiz-actions'><a class='btn secondary' href='welcome.html'>⬅ Volver</a></div>
 </div>
 </main>
 <script>
-function login(){const email=document.getElementById('email').value;const pass=document.getElementById('password').value;if(email==='arcadio.gonzalez@itpanama.pa'&&pass==='123456'){document.getElementById('login-section').style.display='none';document.getElementById('missions-section').classList.remove('hidden');}else{document.getElementById('login-error').style.display='block';}}
+let classes = ['Clase 1: Partes de la computadora', 'Clase 2: Conociendo Microsoft Word', 'Clase 3: El teclado y sus partes'];
+
+function login(){
+    const email = document.getElementById('email').value;
+    const pass = document.getElementById('password').value;
+    if(email === 'arcadio.gonzalez@itpanama.pa' && pass === '123456'){
+        document.getElementById('login-section').style.display = 'none';
+        document.getElementById('missions-section').classList.remove('hidden');
+        renderClasses();
+    } else {
+        document.getElementById('login-error').style.display = 'block';
+    }
+}
+
+function addClass(){
+    const input = document.getElementById('class-name');
+    const className = input.value.trim();
+    if(className === ''){
+        alert('Por favor ingresa un nombre para la clase');
+        return;
+    }
+    classes.push(className);
+    input.value = '';
+    renderClasses();
+}
+
+function deleteClass(index){
+    if(confirm('¿Estás seguro de que quieres eliminar esta clase?')){
+        classes.splice(index, 1);
+        renderClasses();
+    }
+}
+
+function renderClasses(){
+    const classList = document.getElementById('classes-list');
+    classList.innerHTML = '';
+    classes.forEach((cls, index) => {
+        const li = document.createElement('li');
+        li.style.cssText = 'display:flex;justify-content:space-between;padding:10px;background:#f0f0f0;margin:5px 0;border-radius:8px;align-items:center;';
+        li.innerHTML = `<span>${cls}</span><button class='btn secondary' onclick='deleteClass(${index})' style='padding:5px 10px;background:#e74c3c;color:white;border:none;border-radius:5px;cursor:pointer;'>Eliminar</button>`;
+        classList.appendChild(li);
+    });
+}
 </script>
 </body></html>

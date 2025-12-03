@@ -2,20 +2,22 @@ let points = 0, level = 1, medals = 0, missionsCompleted = 0;
 
 const instructions = [
     'Lee atentamente la misión y prepara tu respuesta.',
-    'Comprende cómo el CPU procesa datos.',
-    'Aprende la función de la memoria RAM.'
+    'Lee atentamente la infografia y el resumen del tema y luego conteste las preguntas.',
+    'Lee atentamente el mapa conceptual y el resumen del tema y luego conteste las preguntas.'
 ];
 
 const classes = [
-    '<p>Clase 1: Partes externas.</p><img src="assets/avatar1.png"><iframe src="https://www.youtube.com/embed/egTWbikmo4A" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
-    '<p>Clase 2: CPU.</p><img src="assets/avatar2.png"><iframe src="https://www.youtube.com/embed/8lXdyD2Yzls"></iframe>',
-    '<p>Clase 3: RAM.</p><img src="assets/avatar1.png"><iframe src="https://www.youtube.com/embed/3EJvD1vQ1fY"></iframe>'
+    '<p>Clase 1: Partes externas.</p><img src="assets/avatar1.png"><video width="900" height="315" controls><source src="assets/El computador y sus partes para niños.mp4" type="video/mp4">Tu navegador no soporta video HTML5.</video>',
+    '<p>Clase 2: Microsoft Word.</p><img src="assets/avatar2.png"><img src="assets/clase%202%20infografica.png" alt="Infografía Clase 2" />',
+    '<p>Clase 3: El teclado y sus partes</p><img src="assets/avatar1.png"><img src="assets/Mind%20Map.png" alt="Mapa Conceptual Teclado" />'
 ];
 
+
+
 const summaries = [
-    'Resumen: Periféricos permiten interacción.',
-    'Resumen: CPU es el cerebro del computador.',
-    'Resumen: RAM almacena datos temporales.'
+    'Resumen: objetivo es presentar la definición y los componentes fundamentales de una computadora. Se describe el computador como una herramienta esencial para el trabajo y el entretenimiento que permite guardar, recibir y compartir datos como videos, música y mensajes. El material identifica cuatro partes principales indispensables para el funcionamiento de la máquina: el Monitor, el Teclado, el Mouse y la CPU o torre, señalando a esta última como vital para el almacenamiento de la información. La explicación detalla la función de cada elemento, especificando que el teclado sirve para escribir y buscar, y que el mouse se utiliza para navegar por la pantalla. Adicionalmente, se nombran otros periféricos complementarios como la cámara, el micrófono y la impresora, indicando cómo cada uno añade utilidad a la experiencia informática.',
+    'Resumen: introduce a los estudiantes al programa Microsoft Word, el cual se define como el procesador de textos más utilizado para la creación de informes, tareas e investigaciones. El programa ofrece numerosas herramientas que permiten a los usuarios modificar páginas y texto, además de integrar elementos complejos como dibujos, tablas y gráficas. La lección guía a los usuarios a través del proceso de acceso al programa, explicando la necesidad de usar el botón de inicio para localizar el ícono dentro de la carpeta de Microsoft Office. Una vez abierto, el video identifica los principales componentes de la interfaz de usuario, señalando elementos como la barra de título y las diferentes pestañas que componen la cinta de opciones. Para finalizar, se anima a los espectadores a practicar con pequeños escritos, simplemente tecleando sobre el área de trabajo para comenzar a familiarizarse con la edición básica de documentos.',
+    'Resumen: Partes del teclado que menciona: Teclas de función: Estas son las teclas especiales en la parte de arriba (F1, F2, etc.). Sirven para hacer comandos especiales en programas. Teclas alfanuméricas: Son las letras, números, signos de puntuación esas sirven para escribir palabras, números, oraciones. Teclado numérico (numpad): Como un mini-calculadora incorporada; tiene números y símbolos para calcular cosas rápida. Teclas de control / especiales: Son teclas como "Control", "Escape", "Shift", "Enter", flechas ayudan a dar órdenes distintas a la computadora o mover el cursor. ¿Para qué sirve saber esto? Te ayuda a usar bien el teclado cuando haces tareas, escribes trabajos, buscas cosas. Te permite reconocer cada parte del teclado así sabes dónde están las letras, números, los comandos especiales. Facilita aprender a usar la computadora correctamente, lo que puede ayudarte en la escuela y en tareas.'
 ];
 
 const questions = [
@@ -24,12 +26,15 @@ const questions = [
         { q: '¿Qué dispositivo se usa para escribir texto?', options: ['Mouse', 'Teclado', 'Monitor', 'CPU'], correctIndex: 1 }
     ],
     [
-        { q: '¿Cuál es la función principal del CPU?', options: ['Procesar datos', 'Almacenar archivos', 'Imprimir', 'Internet'], correctIndex: 0 },
-        { q: '¿Qué parte del CPU realiza cálculos?', options: ['Unidad aritmético-lógica', 'Unidad de control', 'Memoria caché', 'Disco duro'], correctIndex: 0 }
+        { q: '¿Para qué sirve Microsoft Word?', options: ['Dibujar imágenes', 'Procesar textos y escribir documentos', 'Navegar en internet', 'Reproducir música'], correctIndex: 1 },
+        { q: '¿Qué haces primero para escribir en Word?', options: ['Abrir un documento nuevo', 'Instalar una impresora', 'Apagar el ordenador', 'Cambiar el fondo de pantalla'], correctIndex: 0 },
+        { q: '¿Cuál de estas cosas puedes insertar en un documento de Word?', options: ['Una tabla', 'Un sistema operativo', 'Un antivirus', 'Un monitor'], correctIndex: 0 }
     ],
     [
-        { q: 'La memoria RAM se usa para…', options: ['Guardar datos', 'Procesar gráficos', 'Almacenar datos temporales', 'Controlar audio'], correctIndex: 2 },
-        { q: '¿Qué pasa con los datos en RAM al apagar?', options: ['Se pierden', 'Se guardan', 'Se imprimen', 'Se duplican'], correctIndex: 0 }
+        { q: '¿Dónde se encuentran las teclas de función (F1, F2, etc.)?', options: ['En la parte de arriba del teclado', 'En el lado derecho', 'En el centro', 'En la parte de abajo'], correctIndex: 0 },
+        { q: '¿Para qué sirven las teclas alfanuméricas?', options: ['Para hacer cálculos rápidos', 'Para escribir palabras, números y signos de puntuación', 'Para navegar en internet', 'Para reproducir música'], correctIndex: 1 },
+        { q: '¿Cuál es otra forma de llamar al teclado numérico?', options: ['Numpad', 'Mini-calculadora', 'Ambas son correctas', 'Ninguna de las anteriores'], correctIndex: 2 },
+        { q: '¿Cuál de estas es una tecla de control especial?', options: ['A', 'B', 'Enter', 'Espacio'], correctIndex: 2 }
     ]
 ];
 
